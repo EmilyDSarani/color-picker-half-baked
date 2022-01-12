@@ -5,7 +5,9 @@ import useColorPicker from '../../hooks/useColorPicker';
 
 
 export default function ColorPicker() {
+  //putting affirmation first so that the useColorPicker knows what bgcolor and fgcolor is from useAffirm
 const affirmation = useAffirmations(bgColor, fgColor);
+//all of our exports from useColorPicker
 const [fgColor, bgColor, content, didChangeColor, handleChange] = useColorPicker();
 
 
