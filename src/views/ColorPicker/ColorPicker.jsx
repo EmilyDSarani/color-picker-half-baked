@@ -6,18 +6,23 @@ import useColorPicker from '../../hooks/useColorPicker';
 
 export default function ColorPicker() {
   //putting affirmation first so that the useColorPicker knows what bgcolor and fgcolor is from useAffirm
-const affirmation = useAffirmations(bgColor, fgColor);
+
 //all of our exports from useColorPicker
 //order from the hook needs to match when we destructor it
-const [fgColor, bgColor, content, didChangeColor, handleChange] = useColorPicker();
-
+const [color, handleChange] = useColorPicker({
+  fgColor:'#ffcc00',
+  bgColor:'#212121',
+  content:'Hello world!',
+  didChangeColor: false,
+})
+const affirmation = useAffirmations({...color}); 
 
 
   return (
     <>
       <fieldset className={styles.colorPickerForm}>
         <legend>
-          {didChangeColor
+          {color.didChangeColor
             ? affirmation
             : 'Pick some colors and a message to display!'}
         </legend>
@@ -25,25 +30,25 @@ const [fgColor, bgColor, content, didChangeColor, handleChange] = useColorPicker
           type="color"
           name="fgColor"
           aria-label="foreground color"
-          value={fgColor}
+          value={color.fgColor}
           onChange={handleChange}
         />
         <input
           type="color"
           name="bgColor"
           aria-label="background color"
-          value={bgColor}
+          value={color.bgColor}
           onChange={handleChange}
         />
         <input
           type="text"
           name="content"
           aria-label="content"
-          value={content}
+          value={color.content}
           onChange={handleChange}
         />
       </fieldset>
-      <Display content={content} bgColor={bgColor} fgColor={fgColor} />
+      <Display content={color.content} bgColor={color.bgColor} fgColor={color.fgColor} />
     </>
   );
 }
