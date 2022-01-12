@@ -3,67 +3,6 @@ import styles from './ColorPicker.css';
 import useAffirmations from '../../hooks/useAffirmation';
 import useColorPicker from '../../hooks/useColorPicker';
 
-// function useAffirmations() {
-//   const [affirmation, setAffirmation] = useState('');
-//   const [fgColor, setFgColor] = useState('#ffcc00');
-//   const [bgColor, setBgColor] = useState('#212121');
-
-//   useEffect(() => {
-//     const affirmations = [
-//       'Great choice!',
-//       'I love that color!',
-//       'Looks good!',
-//       'What a great color combo!',
-//       'Ooh la la, so fancy',
-//     ];
-//     // Generate a random whole number between 0 and the last index of the array
-//     const randomIndex = Math.floor(Math.random() * affirmations.length);
-//     setAffirmation(affirmations[randomIndex]);
-//   }, [bgColor, fgColor]);
-
-//   return affirmation
-// }
-
-// function useColorPicker(initialState){
-//   const [colorState, setColorState] = useState(initialState);
-
-
-// const handleChange = (event) =>{
-//   setColorState((previousState) => {
-//     return {...previousState, [event.target.name]: event.target.value };
-//   })
-// };
-// return [colorState, handleChange]; 
-
-// }
-
-//   const [fgColor, setFgColor] = useState('#ffcc00');
-//   const [bgColor, setBgColor] = useState('#212121');
-//   const [content, setContent] = useState('Hello, world!');
-//   const [didChangeColor, setDidChangeColor] = useState(false);
-
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-//     switch (name) {
-//       case 'fgColor':
-//         setFgColor(value);
-//         setDidChangeColor(true);
-//         break;
-//       case 'bgColor':
-//         setBgColor(value);
-//         setDidChangeColor(true);
-//         break;
-//       case 'content':
-//         setDidChangeColor(false);
-//         setContent(value);
-//         break;
-//       default:
-//         break;
-//     }
-//   };
-// return [fgColor, bgColor, content, didChangeColor, handleChange]
-// }
-
 
 export default function ColorPicker() {
 const [color, handleChange] = useColorPicker({
@@ -72,48 +11,8 @@ const [color, handleChange] = useColorPicker({
   content: 'Hello, world!',
   didChangeColor: false
 });
+const affirmation = useAffirmations();
 
-
-  // const [fgColor] = useColorPicker('#ffcc00');
-  // const [bgColor] = useColorPicker('#212121');
-  // const [content] = useColorPicker('Hello, world!');
-  // const [didChangeColor, setDidChangeColor] = useState(false);
-  // const [affirmation, setAffirmation] = useState('');
-
-  const affirmation = useAffirmations();
-
-  // useEffect(() => {
-  //   const affirmations = [
-  //     'Great choice!',
-  //     'I love that color!',
-  //     'Looks good!',
-  //     'What a great color combo!',
-  //     'Ooh la la, so fancy',
-  //   ];
-  //   // Generate a random whole number between 0 and the last index of the array
-  //   const randomIndex = Math.floor(Math.random() * affirmations.length);
-  //   setAffirmation(affirmations[randomIndex]);
-  // }, [bgColor, fgColor]);
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   switch (name) {
-  //     case 'fgColor':
-  //       setFgColor(value);
-  //       setDidChangeColor(true);
-  //       break;
-  //     case 'bgColor':
-  //       setBgColor(value);
-  //       setDidChangeColor(true);
-  //       break;
-  //     case 'content':
-  //       setDidChangeColor(false);
-  //       setContent(value);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   return (
     <>
