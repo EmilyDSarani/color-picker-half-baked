@@ -5,13 +5,14 @@ import useColorPicker from '../../hooks/useColorPicker';
 
 
 export default function ColorPicker() {
+const affirmation = useAffirmations(bgColor, fgColor);
 const [color, handleChange] = useColorPicker({
   fgColor: '#ffcc00',
   bgColor: '#212121',
   content: 'Hello, world!',
   didChangeColor: false
 });
-const affirmation = useAffirmations();
+
 
 
   return (

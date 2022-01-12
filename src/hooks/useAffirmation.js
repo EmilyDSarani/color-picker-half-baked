@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import useColorPicker from './useColorPicker';
+
 
 export default function useAffirmations() {
   const [affirmation, setAffirmation] = useState('');
-  const [color] = useColorPicker({
-    fgColor:'#ffcc00',
-    bgColor:'#212121'
-  })
+  const [fgColor, setFgColor] = useState('#ffcc00');
+ const [bgColor, setBgColor] = useState('#212121');
 
   useEffect(() => {
     const affirmations = [
@@ -19,7 +17,7 @@ export default function useAffirmations() {
     // Generate a random whole number between 0 and the last index of the array
     const randomIndex = Math.floor(Math.random() * affirmations.length);
     setAffirmation(affirmations[randomIndex]);
-  }, [color.bgColor, color.fgColor]);
+  }, [bgColor, fgColor]);
 
   return affirmation
 }
