@@ -28,5 +28,6 @@ export default function useColorPicker(){
     }
   };
   //return the naming convention to use later when exported
+  //remember that the order will need to match in ColorPicker jsx when we deconstruct it
 return [fgColor, bgColor, content, didChangeColor, handleChange]
 }

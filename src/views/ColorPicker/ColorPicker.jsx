@@ -8,6 +8,7 @@ export default function ColorPicker() {
   //putting affirmation first so that the useColorPicker knows what bgcolor and fgcolor is from useAffirm
 const affirmation = useAffirmations(bgColor, fgColor);
 //all of our exports from useColorPicker
+//order from the hook needs to match when we destructor it
 const [fgColor, bgColor, content, didChangeColor, handleChange] = useColorPicker();
 
 
