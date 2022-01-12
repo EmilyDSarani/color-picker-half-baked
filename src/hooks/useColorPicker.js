@@ -5,6 +5,7 @@ export default function useColorPicker(initialState){
 
 
 const handleChange = (event) =>{
+  //this is an explicit return
   setColorState((previousState) => {
     return {...previousState, [event.target.name]: event.target.value };
   })
