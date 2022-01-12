@@ -1,46 +1,24 @@
-import { useEffect, useState } from 'react';
 import Display from '../../components/Display/Display';
 import styles from './ColorPicker.css';
+import useAffirmations from '../../hooks/useAffirmation';
+import useColorPicker from '../../hooks/useColorPicker';
+
 
 export default function ColorPicker() {
-  const [fgColor, setFgColor] = useState('#ffcc00');
-  const [bgColor, setBgColor] = useState('#212121');
-  const [content, setContent] = useState('Hello, world!');
-  const [didChangeColor, setDidChangeColor] = useState(false);
-  const [affirmation, setAffirmation] = useState('');
+  //putting affirmation first so that the useColorPicker knows what bgcolor and fgcolor is from useAffirm
+  const affirmation = useAffirmations(bgColor, fgColor);
+//all of our exports from useColorPicker
+//order from the hook needs to match when we destructor it
+const [fgColor, bgColor, content, didChangeColor, handleChange] = useColorPicker();
 
-  useEffect(() => {
-    const affirmations = [
-      'Great choice!',
-      'I love that color!',
-      'Looks good!',
-      'What a great color combo!',
-      'Ooh la la, so fancy',
-    ];
-    // Generate a random whole number between 0 and the last index of the array
-    const randomIndex = Math.floor(Math.random() * affirmations.length);
-    setAffirmation(affirmations[randomIndex]);
-  }, [bgColor, fgColor]);
+// const [color, handleChange] = useColorPicker({
+//   fgColor:'#ffcc00',
+//   bgColor:'#212121',
+//   content:'Hello world!',
+//   didChangeColor: false,
+// })
+// const affirmation = useAffirmations({...color}); 
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case 'fgColor':
-        setFgColor(value);
-        setDidChangeColor(true);
-        break;
-      case 'bgColor':
-        setBgColor(value);
-        setDidChangeColor(true);
-        break;
-      case 'content':
-        setDidChangeColor(false);
-        setContent(value);
-        break;
-      default:
-        break;
-    }
-  };
 
   return (
     <>
